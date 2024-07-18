@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://lvj5kb4woue6"]
+
+[ext_resource type="Texture2D" uid="uid://ciuuygtf34d1l" path="res://icon.svg" id="1_buamy"]
+[ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="2_l64rj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_smaif"]
+texture = ExtResource("1_buamy")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_6i6kd"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_smaif")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_6i6kd")
+format = 2
+layer_0/tile_data = PackedInt32Array(131064, 2, 0, 131065, 2, 0, 131066, 2, 0, 131067, 2, 0, 131068, 2, 0, 131069, 2, 0, 131070, 2, 0, 131071, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_l64rj")]
