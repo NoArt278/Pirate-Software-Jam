@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://warodb2ybfpr"]
+
+[ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/box.tscn" id="1_ttbo0"]
+[ext_resource type="PackedScene" uid="uid://d23egkleo7mg2" path="res://scenes/sphere.tscn" id="2_kde24"]
+[ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="3_jan5x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppc66"]
+size = Vector3(5, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_74k62"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
+shape = SubResource("BoxShape3D_ppc66")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
+cast_shadow = 3
+mesh = SubResource("BoxMesh_74k62")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
+shape = SubResource("BoxShape3D_ppc66")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
+cast_shadow = 3
+mesh = SubResource("BoxMesh_74k62")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
+shape = SubResource("BoxShape3D_ppc66")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
+cast_shadow = 3
+mesh = SubResource("BoxMesh_74k62")
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Box" parent="Objects" instance=ExtResource("1_ttbo0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0851403, 0.487847, 1.11053)
+
+[node name="circle" parent="Objects" instance=ExtResource("2_kde24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25293, 0.509712, 0.900532)
+
+[node name="Player" parent="." instance=ExtResource("3_jan5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65873, 1.30718, 0.0366306)

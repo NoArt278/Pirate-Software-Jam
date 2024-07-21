@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckpve2ofpq5xn"]
+[gd_scene load_steps=4 format=3 uid="uid://ckpve2ofpq5xn"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_mmyg1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j46ng"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_qqijw"]
+
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_mmyg1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0012784, 0, -0.016623)
 shape = SubResource("BoxShape3D_j46ng")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+cast_shadow = 3
+gi_mode = 2
+mesh = SubResource("BoxMesh_qqijw")

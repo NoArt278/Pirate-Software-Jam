@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://lvj5kb4woue6"]
+[gd_scene load_steps=8 format=3 uid="uid://lvj5kb4woue6"]
 
-[ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/box.tscn" id="1_3en8b"]
-[ext_resource type="PackedScene" uid="uid://d23egkleo7mg2" path="res://scenes/sphere.tscn" id="2_gj2gu"]
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="2_wjf2o"]
+[ext_resource type="PackedScene" uid="uid://warodb2ybfpr" path="res://scenes/levels/level_1.tscn" id="5_mphul"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mcv7h"]
 
@@ -17,14 +16,6 @@ plane = Plane(0, 0, 1, 0)
 plane = Plane(0, 0, 1, 0)
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Objects" type="Node" parent="."]
-
-[node name="Box" parent="Objects" instance=ExtResource("1_3en8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202334, 1.42778, 0.693182)
-
-[node name="circle" parent="Objects" instance=ExtResource("2_gj2gu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4192, 0.759189, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841, -0.0149012, 1.33939, 4.24036)
@@ -74,3 +65,5 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Raycast Wall"]
 shape = SubResource("WorldBoundaryShape3D_rhgxt")
+
+[node name="Level1" parent="." instance=ExtResource("5_mphul")]
