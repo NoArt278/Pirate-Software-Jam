@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://udbdd10wsnjs"]
+
+[ext_resource type="Script" path="res://scripts/object.gd" id="1_7s68m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jqmyg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a4nj5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7cpl"]
+albedo_color = Color(0.756839, 0.414687, 1.92523e-07, 1)
+
+[node name="Object" type="RigidBody3D"]
+script = ExtResource("1_7s68m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jqmyg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = SubResource("BoxMesh_a4nj5")
+surface_material_override/0 = SubResource("StandardMaterial3D_o7cpl")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

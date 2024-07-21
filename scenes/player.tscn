@@ -29,4 +29,3 @@ sprite_frames = SubResource("SpriteFrames_lu6gy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
-rotation_smoothing_enabled = true
