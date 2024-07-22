@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://lvj5kb4woue6"]
 
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="2_ot845"]
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="2_wjf2o"]
-[ext_resource type="PackedScene" uid="uid://warodb2ybfpr" path="res://scenes/levels/level_1.tscn" id="5_mphul"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mcv7h"]
 
@@ -66,4 +66,5 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Raycast Wall"]
 shape = SubResource("WorldBoundaryShape3D_rhgxt")
 
-[node name="Level1" parent="." instance=ExtResource("5_mphul")]
+[node name="Level" type="Node" parent="."]
+script = ExtResource("2_ot845")
