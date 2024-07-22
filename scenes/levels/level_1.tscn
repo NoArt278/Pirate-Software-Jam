@@ -42,13 +42,13 @@ mesh = SubResource("BoxMesh_74k62")
 [node name="Objects" type="Node" parent="."]
 
 [node name="Box" parent="Objects" instance=ExtResource("1_ttbo0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01677, 0.487847, 1.11053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.551759, 3.03145, -0.101289)
 
 [node name="Box2" parent="Objects" instance=ExtResource("1_ttbo0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.574455, 0.487847, 1.11053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.574455, 0.487847, -0.101289)
 
 [node name="Box3" parent="Objects" instance=ExtResource("1_ttbo0")]
-transform = Transform3D(0.999678, 0, 0.0253569, 0, 1, 0, -0.0253569, 0, 0.999678, 2.88645, 0.487847, 1.11053)
+transform = Transform3D(0.999678, 0, 0.0253569, 0, 1, 0, -0.0253569, 0, 0.999678, 0.563234, 1.71882, -0.101289)
 
 [node name="Player" parent="." instance=ExtResource("3_jan5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65873, 1.30718, 0.0366306)
