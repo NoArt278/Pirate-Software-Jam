@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://lvj5kb4woue6"]
+[gd_scene load_steps=9 format=3 uid="uid://lvj5kb4woue6"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="2_ot845"]
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="2_wjf2o"]
+[ext_resource type="Texture2D" uid="uid://bqn6m0ayg1o6l" path="res://assets/cursor.png" id="3_lh7ea"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mcv7h"]
 
@@ -69,3 +70,27 @@ shape = SubResource("WorldBoundaryShape3D_rhgxt")
 
 [node name="Level" type="Node" parent="."]
 script = ExtResource("2_ot845")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VirtualCursor" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -13.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 13.0
+texture = ExtResource("3_lh7ea")
+expand_mode = 1
