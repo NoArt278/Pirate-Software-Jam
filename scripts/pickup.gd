@@ -33,15 +33,28 @@ func _physics_process(delta):
 	if (Input.is_action_just_released("right_click")) :
 		is_rotating = false
 	if (Input.is_action_pressed("click") and is_dragging) :
+		if (Input.is_action_just_pressed("transform")) :
+			is_dragging = false
+			is_rotating = false
+			var tween = curr_moved_object.create_tween()
+			var currMesh = curr_moved_object.find_child("MeshInstance3D")
+			var currMeshPos = currMesh.global_position
+			currMeshPos.z += 1
+			tween.tween_property(currMesh, "global_position", Vector3(currMesh.global_position.x, currMesh.global_position.y, -4), 1.5)
+			tween.tween_property(currMesh, "global_position", currMeshPos, 1.5)
+			var curr_anim_player : AnimationPlayer = curr_moved_object.find_child("AnimationPlayer")
+			curr_anim_player.play("turn_to_shadow")
+			curr_moved_object.collision_layer = 4 # Set collision layer to layer 3 only
+			curr_moved_object = null
 		if (Input.is_action_just_pressed("right_click")) :
 			is_rotating = true
-		elif (!Input.is_action_pressed("right_click")) :
+		elif (!Input.is_action_pressed("right_click") and curr_moved_object != null) :
 			var new_position : Vector3 = ray_cast_3d.get_collision_point()
 			curr_moved_object.global_position = new_position
 	elif (Input.is_action_just_released("click") and curr_moved_object != null) :
 		curr_moved_object.freeze = false
 		is_dragging = false
-		curr_moved_object.collision_layer = 1
+		curr_moved_object.collision_layer = 25
 
 func _input(event):
 	if event is InputEventMouseMotion : 
@@ -50,3 +63,9 @@ func _input(event):
 			curr_moved_object.rotate(Vector3.UP, event.relative.x * rotate_sensitivity)
 		else :
 			virtual_cursor_pos += event.relative
+
+
+func _on_level_reset_level():
+	is_dragging = false
+	is_rotating = false
+	curr_moved_object = null

@@ -3,17 +3,20 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 3
+var init_z_pos
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	print(collision_layer)
+	init_z_pos = global_position.z
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	else :
+		velocity.y = 0
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():

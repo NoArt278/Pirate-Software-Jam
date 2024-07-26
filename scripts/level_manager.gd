@@ -5,6 +5,8 @@ var curr_level_resource : PackedScene
 var level_instance : Node
 var curr_finish
 
+signal reset_level
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_level(curr_level_number)
@@ -28,4 +30,5 @@ func load_next_level():
 	load_level(curr_level_number)
 
 func restart_level() :
+	reset_level.emit()
 	load_level(curr_level_number)

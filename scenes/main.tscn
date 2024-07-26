@@ -23,18 +23,22 @@ transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841
 script = ExtResource("2_wjf2o")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-light_energy = 4.496
-spot_range = 22.931
+light_color = Color(0.565733, 0.565733, 0, 1)
+light_energy = 4.69
+spot_range = 726.663
 spot_angle = 54.67
 spot_angle_attenuation = 0.183012
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 0.997841, 0.0656818, 0, -0.0656818, 0.997841, 0, 0, 0)
 target_position = Vector3(0, 0, -1)
+collision_mask = 8
 collide_with_areas = true
 debug_shape_custom_color = Color(0.989982, 0, 0.266643, 1)
 
 [node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 25
+collision_mask = 25
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(23.4043, 0, 0, 0, 1, 0, 0, 0, 23.28, 0, 0, 0)
@@ -57,12 +61,14 @@ shape = SubResource("WorldBoundaryShape3D_y8vly")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, -1, 5, 9)
+light_color = Color(0.425433, 0.242447, 4.81308e-08, 1)
+light_energy = 0.4
 shadow_enabled = true
 directional_shadow_mode = 1
 
 [node name="Raycast Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.710139)
-collision_layer = 3
+collision_layer = 11
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Raycast Wall"]
@@ -94,3 +100,5 @@ offset_right = 11.0
 offset_bottom = 13.0
 texture = ExtResource("3_lh7ea")
 expand_mode = 1
+
+[connection signal="reset_level" from="Level" to="Camera3D" method="_on_level_reset_level"]
