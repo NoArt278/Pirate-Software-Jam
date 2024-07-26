@@ -10,7 +10,6 @@ var is_rotating : bool = false
 var virtual_cursor_pos : Vector2 = Vector2.ZERO
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	virtual_cursor_pos = get_viewport().get_mouse_position()
 
 func _process(delta):
@@ -63,6 +62,9 @@ func _input(event):
 			curr_moved_object.rotate(Vector3.UP, event.relative.x * rotate_sensitivity)
 		else :
 			virtual_cursor_pos += event.relative
+	elif event is InputEventMouseButton:
+		if (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED) :
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _on_level_reset_level():
