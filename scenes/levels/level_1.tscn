@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://warodb2ybfpr"]
+[gd_scene load_steps=6 format=3 uid="uid://warodb2ybfpr"]
 
 [ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_ttbo0"]
 [ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="3_j42id"]
 [ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="3_jan5x"]
-[ext_resource type="PackedScene" uid="uid://kpx88lqtvbtb" path="res://scenes/interactables/button.tscn" id="4_nq124"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppc66"]
 size = Vector3(5, 1, 1)
@@ -58,6 +57,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 1.30718, 0.0366306)
 
 [node name="Finish" parent="." instance=ExtResource("3_j42id")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88228, 1.69828, 0)
-
-[node name="Button" parent="." instance=ExtResource("4_nq124")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0.945086, 0)

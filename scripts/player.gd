@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 3
+const JUMP_VELOCITY = 3.7
 var init_z_pos
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

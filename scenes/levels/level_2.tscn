@@ -28,7 +28,7 @@ cast_shadow = 3
 mesh = SubResource("BoxMesh_4q2nk")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29488, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29488, 2.48865, 0)
 collision_layer = 4
 collision_mask = 4
 
@@ -56,4 +56,4 @@ transform = Transform3D(0.999678, 0, 0.0253569, 0, 1, 0, -0.0253569, 0, 0.999678
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 1.30718, 0.0366306)
 
 [node name="Finish" parent="." instance=ExtResource("3_kep4x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88228, 1.69828, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88228, 3.68693, 0)
