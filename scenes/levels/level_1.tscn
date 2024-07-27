@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://warodb2ybfpr"]
+[gd_scene load_steps=7 format=3 uid="uid://warodb2ybfpr"]
 
 [ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_ttbo0"]
 [ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="3_j42id"]
 [ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="3_jan5x"]
+[ext_resource type="PackedScene" uid="uid://kpx88lqtvbtb" path="res://scenes/interactables/button.tscn" id="4_nq124"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppc66"]
 size = Vector3(5, 1, 1)
@@ -14,7 +15,7 @@ size = Vector3(5, 1, 1)
 [node name="Platforms" type="Node" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55519, 0.5, 0)
 collision_layer = 4
 collision_mask = 4
 
@@ -28,7 +29,7 @@ cast_shadow = 3
 mesh = SubResource("BoxMesh_74k62")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29488, 0.5, 0)
 collision_layer = 4
 collision_mask = 4
 
@@ -44,16 +45,19 @@ mesh = SubResource("BoxMesh_74k62")
 [node name="Objects" type="Node" parent="."]
 
 [node name="Box" parent="Objects" instance=ExtResource("1_ttbo0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.551759, 3.03145, -0.101289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034349, 3.03145, -0.101289)
 
 [node name="Box2" parent="Objects" instance=ExtResource("1_ttbo0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.574455, 0.487847, -0.101289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192611, 0.487847, -0.101289)
 
 [node name="Box3" parent="Objects" instance=ExtResource("1_ttbo0")]
-transform = Transform3D(0.999678, 0, 0.0253569, 0, 1, 0, -0.0253569, 0, 0.999678, 0.563234, 1.71882, -0.101289)
+transform = Transform3D(0.999678, 0, 0.0253569, 0, 1, 0, -0.0253569, 0, 0.999678, 0.00804007, 1.71882, -0.101289)
 
 [node name="Player" parent="." instance=ExtResource("3_jan5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65873, 1.30718, 0.0366306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 1.30718, 0.0366306)
 
 [node name="Finish" parent="." instance=ExtResource("3_j42id")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5874, 1.69828, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88228, 1.69828, 0)
+
+[node name="Button" parent="." instance=ExtResource("4_nq124")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0.945086, 0)

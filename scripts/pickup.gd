@@ -10,6 +10,7 @@ var is_rotating : bool = false
 var virtual_cursor_pos : Vector2 = Vector2.ZERO
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	virtual_cursor_pos = get_viewport().get_mouse_position()
 
 func _process(delta):
@@ -39,8 +40,8 @@ func _physics_process(delta):
 			var currMesh = curr_moved_object.find_child("MeshInstance3D")
 			var currMeshPos = currMesh.global_position
 			currMeshPos.z += 1
-			tween.tween_property(currMesh, "global_position", Vector3(currMesh.global_position.x, currMesh.global_position.y, -4), 1.5)
-			tween.tween_property(currMesh, "global_position", currMeshPos, 1.5)
+			tween.tween_property(currMesh, "global_position", Vector3(currMesh.global_position.x, currMesh.global_position.y, -4), 1)
+			tween.tween_property(currMesh, "global_position", currMeshPos, 1)
 			var curr_anim_player : AnimationPlayer = curr_moved_object.find_child("AnimationPlayer")
 			curr_anim_player.play("turn_to_shadow")
 			curr_moved_object.collision_layer = 4 # Set collision layer to layer 3 only
