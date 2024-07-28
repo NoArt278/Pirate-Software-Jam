@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 3.7
+const JUMP_VELOCITY = 4
 var can_jump = true
 var init_z_pos
 @onready var coyote_timer = $CoyoteTimer
@@ -40,5 +40,4 @@ func _physics_process(delta):
 
 
 func _on_coyote_timer_timeout():
-	print("time out")
 	can_jump = false

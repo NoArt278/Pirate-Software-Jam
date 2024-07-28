@@ -7,6 +7,7 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_mcv7h"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1hewt"]
+margin = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_lrfkg"]
 
@@ -98,5 +99,3 @@ offset_right = 11.0
 offset_bottom = 13.0
 texture = ExtResource("3_lh7ea")
 expand_mode = 1
-
-[connection signal="reset_level" from="Level" to="Camera3D" method="_on_level_reset_level"]

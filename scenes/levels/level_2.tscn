@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp4ufyw2uu5iw"]
+[gd_scene load_steps=7 format=3 uid="uid://dp4ufyw2uu5iw"]
 
 [ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_chs2s"]
 [ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="2_dhe8v"]
 [ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="3_kep4x"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6dvjc"]
-size = Vector3(5, 1, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_4q2nk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6a2mj"]
+size = Vector3(4.98492, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2kjoi"]
+size = Vector3(4.98779, 1, 1)
 
 [node name="Level2" type="Node3D"]
 
@@ -18,28 +21,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55519, 0.5, 0)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
-shape = SubResource("BoxShape3D_6dvjc")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D"]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
 cast_shadow = 3
 mesh = SubResource("BoxMesh_4q2nk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00375366, 0, 0)
+shape = SubResource("BoxShape3D_6a2mj")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29488, 2.48865, 0)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
-shape = SubResource("BoxShape3D_6dvjc")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D3"]
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
 cast_shadow = 3
 mesh = SubResource("BoxMesh_4q2nk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000244141, 0, 0)
+shape = SubResource("BoxShape3D_2kjoi")
 
 [node name="Objects" type="Node" parent="."]
 

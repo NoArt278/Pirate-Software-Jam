@@ -1,11 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckpve2ofpq5xn"]
+[gd_scene load_steps=8 format=3 uid="uid://ckpve2ofpq5xn"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_mmyg1"]
+[ext_resource type="ArrayMesh" uid="uid://2jwlp8aofdwc" path="res://assets/arrow.obj" id="2_mm15a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j46ng"]
 size = Vector3(1, 1, 11)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qqijw"]
+
+[sub_resource type="Animation" id="Animation_c71xx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.606341, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nyycc"]
+resource_name = "rotating"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0.65, 0), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3lk4"]
+_data = {
+"RESET": SubResource("Animation_c71xx"),
+"up_down": SubResource("Animation_nyycc")
+}
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 20
@@ -30,5 +68,16 @@ mesh = SubResource("BoxMesh_qqijw")
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="Arrow" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0.606341, 0)
+cast_shadow = 3
+mesh = ExtResource("2_mm15a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arrow"]
+libraries = {
+"": SubResource("AnimationLibrary_y3lk4")
+}
+autoplay = "up_down"
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
