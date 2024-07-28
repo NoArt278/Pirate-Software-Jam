@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdoxy2qiuknte"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dk2v2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8j8ew"]
+size = Vector3(1, 1.99634, 1)
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_v4quk"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_8x6eg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmarf"]
+
+[node name="Enemy" type="AnimatableBody3D"]
+collision_layer = 4
+collision_mask = 4
+input_ray_pickable = false
+axis_lock_linear_z = true
+script = ExtResource("1_dk2v2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.249084, 0)
+shape = SubResource("BoxShape3D_8j8ew")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+cast_shadow = 3
+mesh = SubResource("TubeTrailMesh_v4quk")
+
+[node name="HatMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+cast_shadow = 3
+mesh = SubResource("PrismMesh_8x6eg")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0207568, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0, 0)
+shape = SubResource("BoxShape3D_fmarf")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

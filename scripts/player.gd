@@ -6,7 +6,9 @@ const JUMP_VELOCITY = 4
 const BOUNCE_SPEED = 12
 var can_jump = true
 var is_bouncing = false
+var can_move = true
 var init_z_pos
+signal dead
 @onready var coyote_timer = $CoyoteTimer
 @onready var bounce_timer = $BounceTimer
 
@@ -45,16 +47,27 @@ func _physics_process(delta):
 	
 	for i in get_slide_collision_count():
 		var collider = get_slide_collision(i).get_collider()
-		if (collider is SelectableObject) :
+		if (collider is SelectableObject and collider.is_shadow) :
 			if (collider.physics_material_override != null) :
 				velocity = BOUNCE_SPEED * (global_position - collider.global_position).normalized()
 				is_bouncing = true
 				can_jump = false
 				bounce_timer.start()
-	move_and_slide()
+	if (can_move) :
+		move_and_slide()
 
 func _on_coyote_timer_timeout():
 	can_jump = false
 
 func _on_bounce_timer_timeout():
 	is_bouncing = false
+
+
+func _on_area_3d_body_entered(body):
+	if (body is Enemy) :
+		can_move = false
+		var tween = create_tween()
+		tween.tween_property(self, "scale", Vector3.ZERO, 1)
+		await tween.finished
+		dead.emit()
+		queue_free()

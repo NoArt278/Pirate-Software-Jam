@@ -51,10 +51,10 @@ _data = {
 "interacted": SubResource("Animation_rrly1")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qokss"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5c4j"]
 
 [sub_resource type="TextMesh" id="TextMesh_ehixk"]
-material = SubResource("StandardMaterial3D_qokss")
+material = SubResource("StandardMaterial3D_p5c4j")
 text = "Each object and their shadow has unique characteristics.
 Combine objects by transforming them first then making their shadows touch."
 font_size = 32
@@ -114,6 +114,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87424, 1.68693, -0.00054168
 [node name="Texts" type="Node" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Texts"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20731, 3.92737, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.927, 0)
 cast_shadow = 3
 mesh = SubResource("TextMesh_ehixk")

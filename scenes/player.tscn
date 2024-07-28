@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckpve2ofpq5xn"]
+[gd_scene load_steps=9 format=3 uid="uid://ckpve2ofpq5xn"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_mmyg1"]
 [ext_resource type="ArrayMesh" uid="uid://2jwlp8aofdwc" path="res://assets/arrow.obj" id="2_mm15a"]
@@ -45,6 +45,8 @@ _data = {
 "up_down": SubResource("Animation_nyycc")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fsgr7"]
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 20
 collision_mask = 20
@@ -84,5 +86,14 @@ autoplay = "up_down"
 wait_time = 0.5
 one_shot = true
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0, 0)
+shape = SubResource("BoxShape3D_fsgr7")
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="BounceTimer" to="." method="_on_bounce_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
