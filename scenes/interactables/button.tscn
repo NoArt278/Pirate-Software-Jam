@@ -54,8 +54,8 @@ _data = {
 }
 
 [node name="Button" type="Area3D"]
-collision_layer = 20
-collision_mask = 20
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_0uma5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

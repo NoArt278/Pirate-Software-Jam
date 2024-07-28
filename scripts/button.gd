@@ -10,7 +10,7 @@ func _ready():
 	target = target_obj.get_children()
 
 func _on_body_entered(body):
-	if (body.name == "Player" or body is RigidBody3D) and not(is_activated) :
+	if (body.name == "Player") and not(is_activated) :
 		is_activated = true
 		animation_player.play("press")
 		for t in target :
