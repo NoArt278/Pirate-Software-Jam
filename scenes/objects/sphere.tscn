@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/objects/sphere.gd" id="1_q3ks0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xl21e"]
-bounce = 0.8
+bounce = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_viako"]
 
@@ -89,6 +89,7 @@ _data = {
 transform = Transform3D(0.999924, 0.0123043, 0, -0.0123043, 0.999924, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 25
 collision_mask = 17
+mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_xl21e")
 freeze = true
 continuous_cd = true

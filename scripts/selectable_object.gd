@@ -5,11 +5,7 @@ class_name SelectableObject
 var is_shadow : bool = false
 var is_combined : bool = false
 var is_damaging : bool = false
-var combine_area : Area3D
-
-func _ready():
-	combine_area = find_child("Area3D")
-	combine_area.connect("body_entered", combine_shapes)
+@onready var combine_area = $Area3D
 
 func turn_to_shadow() :
 	is_shadow = true
@@ -20,10 +16,11 @@ func turn_to_shadow() :
 	tween.tween_property(self, "global_position", currPos, 1)
 	var curr_anim_player : AnimationPlayer = find_child("AnimationPlayer")
 	curr_anim_player.play("turn_to_shadow")
+	axis_lock_linear_z = true
+	combine_area.connect("body_entered", combine_shapes)
 
 func combine_shapes(body) : 
 	if (body is SelectableObject and body != self and not(is_combined)) :
-		print("Combining")
 		var other_body_mesh : MeshInstance3D = body.find_child("MeshInstance3D")
 		other_body_mesh.reparent(self)
 		other_body_mesh.position = Vector3.ZERO # Center other mesh
@@ -34,7 +31,7 @@ func combine_shapes(body) :
 			freeze = true
 		elif (body.name.contains("Sphere")) :
 			var new_physics_material = PhysicsMaterial.new()
-			new_physics_material.bounce = 0.8
+			new_physics_material.bounce = 1
 			physics_material_override = new_physics_material
 		else : # Prism
 			is_damaging = true

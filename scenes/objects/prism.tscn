@@ -62,6 +62,7 @@ _data = {
 [node name="Prism" type="RigidBody3D"]
 collision_layer = 25
 collision_mask = 17
+mass = 0.3
 freeze = true
 continuous_cd = true
 script = ExtResource("1_cypsk")
