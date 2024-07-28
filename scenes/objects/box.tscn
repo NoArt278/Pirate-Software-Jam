@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://udbdd10wsnjs"]
+[gd_scene load_steps=9 format=3 uid="uid://udbdd10wsnjs"]
 
-[ext_resource type="Animation" uid="uid://ddfjaoff3dohk" path="res://assets/turn_to_shadow.res" id="1_pd1md"]
+[ext_resource type="Script" path="res://scripts/objects/box.gd" id="1_urp60"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqmyg"]
 
@@ -9,12 +9,66 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7cpl"]
 albedo_color = Color(0.756839, 0.414687, 1.92523e-07, 1)
 
-[sub_resource type="Animation" id="Animation_rrd8h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bayue"]
+
+[sub_resource type="Animation" id="Animation_ort4f"]
+resource_name = "turn_to_shadow"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:cast_shadow")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [25, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [17, 4]
+}
+
+[sub_resource type="Animation" id="Animation_1ycee"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("MeshInstance3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:cast_shadow")
+tracks/1/path = NodePath("MeshInstance3D:cast_shadow")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,16 +89,42 @@ tracks/1/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxssp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3xpm"]
 _data = {
-"RESET": SubResource("Animation_rrd8h"),
-"turn_to_shadow": ExtResource("1_pd1md")
+"RESET": SubResource("Animation_1ycee"),
+"turn_to_shadow": SubResource("Animation_ort4f")
 }
 
 [node name="Box" type="RigidBody3D"]
 collision_layer = 25
 collision_mask = 17
+continuous_cd = true
+script = ExtResource("1_urp60")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_jqmyg")
@@ -54,8 +134,15 @@ gi_mode = 2
 mesh = SubResource("BoxMesh_a4nj5")
 surface_material_override/0 = SubResource("StandardMaterial3D_o7cpl")
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_bayue")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../MeshInstance3D")
 libraries = {
-"": SubResource("AnimationLibrary_hxssp")
+"": SubResource("AnimationLibrary_i3xpm")
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lvj5kb4woue6"]
+[gd_scene load_steps=11 format=3 uid="uid://lvj5kb4woue6"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="2_ot845"]
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="2_wjf2o"]
@@ -6,8 +6,8 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mcv7h"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1hewt"]
-margin = 0.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4bs2"]
+size = Vector3(24.3245, 0.536621, 37)
 
 [sub_resource type="QuadMesh" id="QuadMesh_lrfkg"]
 
@@ -16,6 +16,12 @@ plane = Plane(0, 0, 1, 0)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rhgxt"]
 plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d8646"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uvuwh"]
+plane = Plane(-1, 0, 0, 0)
 
 [node name="Node3D" type="Node3D"]
 
@@ -38,8 +44,9 @@ collide_with_areas = true
 debug_shape_custom_color = Color(0.989982, 0, 0.266643, 1)
 
 [node name="Floor" type="StaticBody3D" parent="."]
-collision_layer = 25
-collision_mask = 25
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0214508, 0)
+collision_layer = 13
+collision_mask = 13
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(23.4043, 0, 0, 0, 1, 0, 0, 0, 23.28, 0, 0, 0)
@@ -48,7 +55,8 @@ mesh = SubResource("PlaneMesh_mcv7h")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape3D_1hewt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94224, -0.231689, -1)
+shape = SubResource("BoxShape3D_y4bs2")
 
 [node name="Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514883, -3.28199)
@@ -66,12 +74,28 @@ shadow_enabled = true
 directional_shadow_mode = 1
 
 [node name="Raycast Wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.710139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27184)
 collision_layer = 11
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Raycast Wall"]
 shape = SubResource("WorldBoundaryShape3D_rhgxt")
+
+[node name="Side Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5821, 0, -2.54367)
+collision_layer = 15
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Side Wall"]
+shape = SubResource("WorldBoundaryShape3D_d8646")
+
+[node name="Side Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9788, 0, -2.54367)
+collision_layer = 15
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Side Wall2"]
+shape = SubResource("WorldBoundaryShape3D_uvuwh")
 
 [node name="Level" type="Node" parent="."]
 script = ExtResource("2_ot845")

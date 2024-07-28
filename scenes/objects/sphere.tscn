@@ -1,6 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d23egkleo7mg2"]
+[gd_scene load_steps=10 format=3 uid="uid://d23egkleo7mg2"]
 
 [ext_resource type="Animation" uid="uid://ddfjaoff3dohk" path="res://assets/turn_to_shadow.res" id="1_b3jev"]
+[ext_resource type="Script" path="res://scripts/objects/sphere.gd" id="1_q3ks0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xl21e"]
+bounce = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_viako"]
 
@@ -36,6 +40,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:freeze")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxssp"]
 _data = {
@@ -43,9 +59,16 @@ _data = {
 "turn_to_shadow": ExtResource("1_b3jev")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1gnce"]
+
 [node name="Sphere" type="RigidBody3D"]
+transform = Transform3D(0.999924, 0.0123043, 0, -0.0123043, 0.999924, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 25
 collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_xl21e")
+freeze = true
+continuous_cd = true
+script = ExtResource("1_q3ks0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_viako")
@@ -59,3 +82,11 @@ root_node = NodePath("../MeshInstance3D")
 libraries = {
 "": SubResource("AnimationLibrary_hxssp")
 }
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_1gnce")

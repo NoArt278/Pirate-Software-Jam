@@ -4,7 +4,7 @@ extends Camera3D
 @onready var ray_cast_3d : RayCast3D = $RayCast3D
 const ray_cast_dist : float = 30
 const rotate_sensitivity : float = 0.01
-var curr_moved_object : RigidBody3D = null
+var curr_moved_object : SelectableObject = null
 var is_dragging : bool = false
 var is_rotating : bool = false
 var virtual_cursor_pos : Vector2 = Vector2.ZERO
@@ -20,7 +20,7 @@ func _process(delta):
 	ray_cast_3d.target_position = end_pos
 	virtual_cursor.set_global_position(virtual_cursor_pos)
 	if (ray_cast_3d.is_colliding() and not(is_dragging)) :
-		if (ray_cast_3d.get_collider() is RigidBody3D) : # a movable object
+		if (ray_cast_3d.get_collider() is SelectableObject) : # a movable object
 			curr_moved_object = ray_cast_3d.get_collider()
 		else :
 			curr_moved_object = null
@@ -36,22 +36,14 @@ func _physics_process(delta):
 		if (Input.is_action_just_pressed("transform")) :
 			is_dragging = false
 			is_rotating = false
-			var tween = curr_moved_object.create_tween()
-			var currMesh = curr_moved_object.find_child("MeshInstance3D")
-			var currMeshPos = currMesh.global_position
-			currMeshPos.z += 1
-			tween.tween_property(currMesh, "global_position", Vector3(currMesh.global_position.x, currMesh.global_position.y, -4), 1)
-			tween.tween_property(currMesh, "global_position", currMeshPos, 1)
-			var curr_anim_player : AnimationPlayer = curr_moved_object.find_child("AnimationPlayer")
-			curr_anim_player.play("turn_to_shadow")
-			curr_moved_object.collision_layer = 4 # Set collision layer to layer 3 only
+			curr_moved_object.turn_to_shadow()
 			curr_moved_object = null
 		if (Input.is_action_just_pressed("right_click")) :
 			is_rotating = true
 		elif (!Input.is_action_pressed("right_click") and curr_moved_object != null) :
 			var new_position : Vector3 = ray_cast_3d.get_collision_point()
 			curr_moved_object.global_position = new_position
-	elif (Input.is_action_just_released("click") and curr_moved_object != null) :
+	elif (Input.is_action_just_released("click") and is_dragging) :
 		curr_moved_object.freeze = false
 		is_dragging = false
 		curr_moved_object.collision_layer = 25
