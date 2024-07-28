@@ -4,7 +4,7 @@ var curr_level_number : int = 1
 var curr_level_resource : PackedScene
 var level_instance : Node
 var curr_finish
-const last_level : int = 10
+const last_level : int = 3
 
 signal reset_level
 
@@ -19,12 +19,15 @@ func _process(delta):
 func load_level(level_num: int) :
 	if (level_instance != null) :
 		level_instance.queue_free()
-	print("res://scenes/levels/level_" + str(level_num) + ".tscn")
-	curr_level_resource = load("res://scenes/levels/level_" + str(level_num) + ".tscn")
+	if (level_num > last_level) :
+		curr_level_resource = load("res://scenes/levels/end.tscn")
+	else :
+		curr_level_resource = load("res://scenes/levels/level_" + str(level_num) + ".tscn")
 	level_instance = curr_level_resource.instantiate()
 	add_child(level_instance)
 	curr_finish = level_instance.find_child("Finish")
-	curr_finish.connect("level_finished", load_next_level)
+	if (curr_finish != null) :
+		curr_finish.connect("level_finished", load_next_level)
 
 func load_next_level():
 	curr_level_number += 1

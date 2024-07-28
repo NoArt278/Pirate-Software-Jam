@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp4ufyw2uu5iw"]
+[gd_scene load_steps=9 format=3 uid="uid://dp4ufyw2uu5iw"]
 
 [ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_chs2s"]
 [ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="2_dhe8v"]
@@ -11,6 +11,17 @@ size = Vector3(4.98492, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2kjoi"]
 size = Vector3(4.98779, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00uar"]
+
+[sub_resource type="TextMesh" id="TextMesh_q3gq7"]
+material = SubResource("StandardMaterial3D_00uar")
+text = "Press T while dragging an object 
+to transform it into a shadow.
+You can't drag objects once they're 
+transformed.
+"
+font_size = 32
 
 [node name="Level2" type="Node3D"]
 
@@ -60,3 +71,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 1.30718, 0.0366306)
 
 [node name="Finish" parent="." instance=ExtResource("3_kep4x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88228, 3.68693, 0)
+
+[node name="Texts" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Texts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56531, 3.15351, 0)
+cast_shadow = 3
+mesh = SubResource("TextMesh_q3gq7")

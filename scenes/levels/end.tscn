@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://3nycnqpthjen"]
+
+[sub_resource type="TextMesh" id="TextMesh_rgrkr"]
+text = "That's all for now !
+Thank you for playing."
+font_size = 64
+
+[node name="End" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0951, 0)
+cast_shadow = 3
+mesh = SubResource("TextMesh_rgrkr")

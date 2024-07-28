@@ -26,7 +26,8 @@ plane = Plane(-1, 0, 0, 0)
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841, -0.0149012, 1.33939, 5.34878)
+transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841, -0.0149012, 2.07514, 5.34878)
+fov = 70.0
 script = ExtResource("2_wjf2o")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]

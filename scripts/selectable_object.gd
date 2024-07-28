@@ -31,7 +31,7 @@ func combine_shapes(body) :
 			freeze = true
 		elif (body.name.contains("Sphere")) :
 			var new_physics_material = PhysicsMaterial.new()
-			new_physics_material.bounce = 1
+			new_physics_material.bounce = 0.9
 			physics_material_override = new_physics_material
 		else : # Prism
 			is_damaging = true

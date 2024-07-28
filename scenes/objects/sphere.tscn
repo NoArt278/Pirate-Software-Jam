@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/objects/sphere.gd" id="1_q3ks0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xl21e"]
-bounce = 1.0
+bounce = 0.9
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_viako"]
 

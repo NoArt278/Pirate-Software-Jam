@@ -1,8 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://warodb2ybfpr"]
 
 [ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_ttbo0"]
-[ext_resource type="PackedScene" uid="uid://bb4ydyj18xnxd" path="res://scenes/objects/prism.tscn" id="2_vw26i"]
-[ext_resource type="PackedScene" uid="uid://d23egkleo7mg2" path="res://scenes/objects/sphere.tscn" id="3_e4yt2"]
 [ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="3_j42id"]
 [ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="3_jan5x"]
 
@@ -10,6 +8,16 @@
 size = Vector3(5, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_74k62"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1yni"]
+
+[sub_resource type="TextMesh" id="TextMesh_7aihm"]
+material = SubResource("StandardMaterial3D_q1yni")
+text = "Use WASD to Move.
+Click and drag to move objects.
+Press R to reset level.
+"
+font_size = 32
 
 [node name="Level1" type="Node3D"]
 
@@ -45,17 +53,21 @@ mesh = SubResource("BoxMesh_74k62")
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="Prism" parent="Objects" instance=ExtResource("2_vw26i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65682, 0.633162, 0)
-
-[node name="Sphere" parent="Objects" instance=ExtResource("3_e4yt2")]
-transform = Transform3D(0.999924, 0.0123043, 0, -0.0123043, 0.999924, 0, 0, 0, 1, -1.52114, 0.557015, 0)
-
 [node name="Box" parent="Objects" instance=ExtResource("1_ttbo0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.630225, 0)
+
+[node name="Box2" parent="Objects" instance=ExtResource("1_ttbo0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06263, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_jan5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 1.30718, 0.0366306)
 
 [node name="Finish" parent="." instance=ExtResource("3_j42id")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88228, 1.69828, 0)
+
+[node name="Texts" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Texts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56531, 2.85351, 0)
+cast_shadow = 3
+mesh = SubResource("TextMesh_7aihm")
