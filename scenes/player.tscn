@@ -80,4 +80,9 @@ libraries = {
 }
 autoplay = "up_down"
 
+[node name="BounceTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="BounceTimer" to="." method="_on_bounce_timer_timeout"]

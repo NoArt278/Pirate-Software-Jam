@@ -123,3 +123,5 @@ offset_right = 11.0
 offset_bottom = 13.0
 texture = ExtResource("3_lh7ea")
 expand_mode = 1
+
+[connection signal="reset_level" from="Level" to="Camera3D" method="_on_level_reset_level"]

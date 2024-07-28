@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpbmcq5swq5rk"]
+[gd_scene load_steps=13 format=3 uid="uid://bpbmcq5swq5rk"]
 
 [ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_kco1c"]
+[ext_resource type="PackedScene" uid="uid://d23egkleo7mg2" path="res://scenes/objects/sphere.tscn" id="2_0fi2v"]
 [ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="2_wgnq4"]
 [ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="3_6tqky"]
 [ext_resource type="PackedScene" uid="uid://kpx88lqtvbtb" path="res://scenes/interactables/button.tscn" id="4_tlbcm"]
@@ -72,6 +73,9 @@ mesh = SubResource("BoxMesh_4qfr0")
 
 [node name="Box2" parent="Objects" instance=ExtResource("1_kco1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192611, 1.48785, -0.101289)
+
+[node name="Sphere" parent="Objects" instance=ExtResource("2_0fi2v")]
+transform = Transform3D(0.999924, 0.0123043, 0, -0.0123043, 0.999924, 0, 0, 0, 1, 1.44535, 1.45479, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_wgnq4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 1.28483, 0.0366306)
