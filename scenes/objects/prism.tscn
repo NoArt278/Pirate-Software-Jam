@@ -65,6 +65,8 @@ collision_mask = 17
 mass = 0.3
 freeze = true
 continuous_cd = true
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_cypsk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

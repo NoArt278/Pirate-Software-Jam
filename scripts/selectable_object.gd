@@ -2,10 +2,16 @@ extends RigidBody3D
 
 class_name SelectableObject
 
+enum OBJECT_TYPE {BOX, SPHERE, PRISM}
+
 var is_shadow : bool = false
 var is_combined : bool = false
 var is_damaging : bool = false
+var self_type : OBJECT_TYPE
+var is_trampoline : bool = false
 @onready var combine_area = $Area3D
+
+const BOUNCE_SPEED = 12
 
 func turn_to_shadow() :
 	is_shadow = true
@@ -18,22 +24,34 @@ func turn_to_shadow() :
 	curr_anim_player.play("turn_to_shadow")
 	axis_lock_linear_z = true
 	combine_area.connect("body_entered", combine_shapes)
+	connect("body_entered", body_collide)
 
 func combine_shapes(body) : 
-	if (body is SelectableObject and body != self and not(is_combined)) :
+	if (body is SelectableObject and body != self and not(is_combined) and not(body.is_combined)) :
 		var other_body_mesh : MeshInstance3D = body.find_child("MeshInstance3D")
 		other_body_mesh.reparent(self)
 		other_body_mesh.position = Vector3.ZERO # Center other mesh
 		other_body_mesh.scale = Vector3(1.25, 1.25, 1.25)
-		other_body_mesh.rotation = Vector3.ZERO
-		if (body.name.contains("Box")) :
-			freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
-			freeze = true
-		elif (body.name.contains("Sphere")) :
+		other_body_mesh.global_rotation = Vector3.ZERO
+		global_rotation = Vector3.ZERO
+		if (body.self_type == OBJECT_TYPE.BOX) :
+			lock_rotation = true
+			axis_lock_linear_x = true
+			axis_lock_linear_y = true
+			axis_lock_linear_z = true
+		elif (body.self_type == OBJECT_TYPE.SPHERE) :
 			var new_physics_material = PhysicsMaterial.new()
 			new_physics_material.bounce = 0.9
 			physics_material_override = new_physics_material
+			if (self_type == OBJECT_TYPE.BOX) :
+				is_trampoline = true
 		else : # Prism
 			is_damaging = true
+			if (self_type == OBJECT_TYPE.SPHERE) :
+				is_trampoline = false
 		body.queue_free()
 		is_combined = true
+
+func body_collide(body) :
+	if (body is SelectableObject and body.is_trampoline) :
+		linear_velocity = BOUNCE_SPEED * (global_position - body.global_position).normalized()

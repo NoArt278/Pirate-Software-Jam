@@ -55,7 +55,7 @@ func _input(event):
 			curr_moved_object.rotate(Vector3.UP, event.relative.x * rotate_sensitivity)
 		else :
 			virtual_cursor_pos += event.relative
-	elif event is InputEventMouseButton:
+	elif event is InputEventMouseButton: 
 		if (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED) :
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

@@ -16,13 +16,13 @@ func _physics_process(delta):
 
 func _on_area_3d_body_entered(body):
 	if (body is SelectableObject and body.is_damaging and not(is_dead)) :
-		collision_shape_3d.disabled = true
-		area_col.disabled = true
+		collision_shape_3d.set_deferred("disabled", true)
+		area_col.set_deferred("disabled", true)
 		is_dead = true
 		var tween = create_tween()
 		tween.tween_property(body_mesh, "scale", Vector3(0, 0 ,0), 0.2)
 		tween.tween_property(hat_mesh, "position", Vector3(hat_mesh.position.x, 0, hat_mesh.global_position.z), 0.3)
 		await tween.finished
 		queue_free()
-	elif (body is StaticBody3D or (body is AnimatableBody3D and body != self)) :
+	elif (body is StaticBody3D or (body is AnimatableBody3D and body != self) or (body is SelectableObject)) :
 		direction *= -1

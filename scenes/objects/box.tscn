@@ -85,6 +85,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [512]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:freeze")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ort4f"]
 resource_name = "turn_to_shadow"
@@ -161,6 +173,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [512, 4]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:freeze")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i3xpm"]
 _data = {
@@ -172,8 +196,11 @@ _data = {
 collision_layer = 25
 collision_mask = 17
 mass = 0.3
+freeze = true
 freeze_mode = 1
 continuous_cd = true
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_urp60")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

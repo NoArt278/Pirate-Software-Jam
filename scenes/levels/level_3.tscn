@@ -56,7 +56,7 @@ _data = {
 [sub_resource type="TextMesh" id="TextMesh_ehixk"]
 material = SubResource("StandardMaterial3D_p5c4j")
 text = "Each object and their shadow has unique characteristics.
-Combine objects by transforming them first then making their shadows touch."
+Combine shadow of objects by transforming them first then making the shadows touch."
 font_size = 32
 
 [node name="Level3" type="Node3D"]

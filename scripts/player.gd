@@ -2,8 +2,9 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4
+const JUMP_VELOCITY = 4.3
 const BOUNCE_SPEED = 12
+const PUSH_FORCE = 5
 var can_jump = true
 var is_bouncing = false
 var can_move = true
@@ -11,6 +12,7 @@ var init_z_pos
 signal dead
 @onready var coyote_timer = $CoyoteTimer
 @onready var bounce_timer = $BounceTimer
+@onready var mesh_instance_3d = $MeshInstance3D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -46,9 +48,11 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	for i in get_slide_collision_count():
-		var collider = get_slide_collision(i).get_collider()
-		if (collider is SelectableObject and collider.is_shadow) :
-			if (collider.physics_material_override != null) :
+		var col = get_slide_collision(i)
+		var collider = col.get_collider()
+		if (collider is SelectableObject) :
+			collider.apply_force(col.get_normal() * -PUSH_FORCE)
+			if (collider.is_shadow and collider.is_trampoline) :
 				velocity = BOUNCE_SPEED * (global_position - collider.global_position).normalized()
 				is_bouncing = true
 				can_jump = false
@@ -67,7 +71,7 @@ func _on_area_3d_body_entered(body):
 	if (body is Enemy) :
 		can_move = false
 		var tween = create_tween()
-		tween.tween_property(self, "scale", Vector3.ZERO, 1)
+		tween.tween_property(mesh_instance_3d, "scale", Vector3.ZERO, 1)
 		await tween.finished
 		dead.emit()
 		queue_free()

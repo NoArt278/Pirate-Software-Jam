@@ -93,6 +93,8 @@ mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_xl21e")
 freeze = true
 continuous_cd = true
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_q3ks0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://tppusl5mexeo"]
+
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="1_m7vyj"]
+[ext_resource type="Texture2D" uid="uid://bqn6m0ayg1o6l" path="res://assets/cursor.png" id="2_pvq8b"]
+[ext_resource type="PackedScene" uid="uid://nbirr7jr3pr3" path="res://scenes/levels/level_4.tscn" id="3_4ulg2"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h42fj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_imcq8"]
+size = Vector3(24.3245, 0.536621, 37)
+
+[sub_resource type="QuadMesh" id="QuadMesh_knmt3"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pj0f2"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_143mq"]
+plane = Plane(0, 0, 1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_kbv4b"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_eliyg"]
+plane = Plane(-1, 0, 0, 0)
+
+[node name="Level Test" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841, -0.0149012, 2.07514, 5.34878)
+fov = 70.0
+script = ExtResource("1_m7vyj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+light_color = Color(0.565733, 0.565733, 0, 1)
+light_energy = 4.69
+spot_range = 726.663
+spot_angle = 54.67
+spot_angle_attenuation = 0.183012
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.997841, 0.0656818, 0, -0.0656818, 0.997841, 0, 0, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 8
+collide_with_areas = true
+debug_shape_custom_color = Color(0.989982, 0, 0.266643, 1)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0214508, 0)
+collision_layer = 13
+collision_mask = 13
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(23.4043, 0, 0, 0, 1, 0, 0, 0, 23.28, 0, 0, 0)
+gi_mode = 2
+mesh = SubResource("PlaneMesh_h42fj")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94224, -0.231689, -1)
+shape = SubResource("BoxShape3D_imcq8")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514883, -3.28199)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(20.4599, 0, 0, 0, 6.92472, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("QuadMesh_knmt3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("WorldBoundaryShape3D_pj0f2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, -1, 5, 9)
+shadow_enabled = true
+directional_shadow_mode = 1
+
+[node name="Raycast Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27184)
+collision_layer = 11
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Raycast Wall"]
+shape = SubResource("WorldBoundaryShape3D_143mq")
+
+[node name="Side Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5821, 0, -2.54367)
+collision_layer = 15
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Side Wall"]
+shape = SubResource("WorldBoundaryShape3D_kbv4b")
+
+[node name="Side Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9788, 0, -2.54367)
+collision_layer = 15
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Side Wall2"]
+shape = SubResource("WorldBoundaryShape3D_eliyg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VirtualCursor" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -13.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 13.0
+texture = ExtResource("2_pvq8b")
+expand_mode = 1
+
+[node name="Level4" parent="." instance=ExtResource("3_4ulg2")]

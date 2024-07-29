@@ -1,33 +1,33 @@
-[gd_scene load_steps=15 format=3 uid="uid://nbirr7jr3pr3"]
+[gd_scene load_steps=15 format=3 uid="uid://emvv60kivgp7"]
 
-[ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_x4e1f"]
-[ext_resource type="PackedScene" uid="uid://d23egkleo7mg2" path="res://scenes/objects/sphere.tscn" id="2_4wxaj"]
-[ext_resource type="PackedScene" uid="uid://bb4ydyj18xnxd" path="res://scenes/objects/prism.tscn" id="3_bcrjj"]
-[ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="3_xm50e"]
-[ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="4_4llft"]
-[ext_resource type="PackedScene" uid="uid://bdoxy2qiuknte" path="res://scenes/enemy.tscn" id="6_dkpb6"]
-[ext_resource type="Script" path="res://scripts/DeathText.gd" id="7_w51uv"]
+[ext_resource type="PackedScene" uid="uid://udbdd10wsnjs" path="res://scenes/objects/box.tscn" id="1_4cged"]
+[ext_resource type="PackedScene" uid="uid://d23egkleo7mg2" path="res://scenes/objects/sphere.tscn" id="2_taryx"]
+[ext_resource type="PackedScene" uid="uid://bb4ydyj18xnxd" path="res://scenes/objects/prism.tscn" id="3_8trnr"]
+[ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="4_osyah"]
+[ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="5_nt0k6"]
+[ext_resource type="PackedScene" uid="uid://bdoxy2qiuknte" path="res://scenes/enemy.tscn" id="6_qb68i"]
+[ext_resource type="Script" path="res://scripts/DeathText.gd" id="7_jsgu8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wdvbr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdsb4"]
 size = Vector3(17, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_s3t4d"]
+[sub_resource type="BoxMesh" id="BoxMesh_15otn"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8xcwi"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_aalvu"]
 size = Vector3(5, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_wshin"]
+[sub_resource type="BoxMesh" id="BoxMesh_on7g8"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_wppos"]
+[sub_resource type="BoxMesh" id="BoxMesh_i4iql"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qo4m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qokss"]
 
-[sub_resource type="TextMesh" id="TextMesh_k1rma"]
-material = SubResource("StandardMaterial3D_6qo4m")
+[sub_resource type="TextMesh" id="TextMesh_hlupp"]
+material = SubResource("StandardMaterial3D_qokss")
 text = "Press R to restart"
 font_size = 32
 
-[node name="Level4" type="Node3D"]
+[node name="Level5" type="Node3D"]
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -37,12 +37,12 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D"]
-shape = SubResource("BoxShape3D_wdvbr")
+shape = SubResource("BoxShape3D_sdsb4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D"]
 transform = Transform3D(16.9662, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 3
-mesh = SubResource("BoxMesh_s3t4d")
+mesh = SubResource("BoxMesh_15otn")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.47939, 0)
@@ -50,12 +50,12 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D2"]
-shape = SubResource("BoxShape3D_8xcwi")
+shape = SubResource("BoxShape3D_aalvu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D2"]
 transform = Transform3D(4.95, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 3
-mesh = SubResource("BoxMesh_wshin")
+mesh = SubResource("BoxMesh_on7g8")
 skeleton = NodePath("../../StaticBody3D2")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Platforms"]
@@ -64,12 +64,12 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D3"]
-shape = SubResource("BoxShape3D_8xcwi")
+shape = SubResource("BoxShape3D_aalvu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D3"]
 transform = Transform3D(4.96056, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 cast_shadow = 3
-mesh = SubResource("BoxMesh_wppos")
+mesh = SubResource("BoxMesh_i4iql")
 skeleton = NodePath("../../StaticBody3D2")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Platforms"]
@@ -78,35 +78,34 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D4"]
-shape = SubResource("BoxShape3D_8xcwi")
+shape = SubResource("BoxShape3D_aalvu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D4"]
 transform = Transform3D(4.96056, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, -0.0604918, 0)
 cast_shadow = 3
-mesh = SubResource("BoxMesh_wppos")
+mesh = SubResource("BoxMesh_i4iql")
 skeleton = NodePath("../../StaticBody3D2")
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="Box" parent="Objects" instance=ExtResource("1_x4e1f")]
+[node name="Box" parent="Objects" instance=ExtResource("1_4cged")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192611, 1.48785, -0.101289)
-freeze = true
 
-[node name="Sphere" parent="Objects" instance=ExtResource("2_4wxaj")]
+[node name="Sphere" parent="Objects" instance=ExtResource("2_taryx")]
 transform = Transform3D(0.999924, 0.0123043, 0, -0.0123043, 0.999924, 0, 0, 0, 1, 1.44535, 1.45479, 0)
 
-[node name="Prism" parent="Objects" instance=ExtResource("3_bcrjj")]
+[node name="Prism" parent="Objects" instance=ExtResource("3_8trnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 1.5, 0)
 
-[node name="Player" parent="." instance=ExtResource("3_xm50e")]
+[node name="Player" parent="." instance=ExtResource("4_osyah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 2.28483, 0.0366306)
 
-[node name="Finish" parent="." instance=ExtResource("4_4llft")]
+[node name="Finish" parent="." instance=ExtResource("5_nt0k6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87424, 3.6266, -0.000541687)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("6_dkpb6")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("6_qb68i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24367, 0)
 
 [node name="Text" type="Node" parent="."]
@@ -114,7 +113,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24367, 0)
 [node name="DeathText" type="MeshInstance3D" parent="Text"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.927, 0)
 cast_shadow = 3
-mesh = SubResource("TextMesh_k1rma")
-script = ExtResource("7_w51uv")
-
-[connection signal="dead" from="Player" to="Text/DeathText" method="_on_player_dead"]
+mesh = SubResource("TextMesh_hlupp")
+script = ExtResource("7_jsgu8")
