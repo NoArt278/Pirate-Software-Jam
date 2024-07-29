@@ -13,10 +13,9 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	virtual_cursor_pos = get_viewport().get_mouse_position()
 
-func _process(delta):
+func _process(_delta):
 	var from_pos = project_ray_origin(virtual_cursor_pos)
 	var end_pos = from_pos + project_ray_normal(virtual_cursor_pos) * ray_cast_dist
-	ray_cast_3d.global_position = from_pos
 	ray_cast_3d.target_position = end_pos
 	virtual_cursor.set_global_position(virtual_cursor_pos)
 	if (ray_cast_3d.is_colliding() and not(is_dragging)) :
@@ -25,7 +24,7 @@ func _process(delta):
 		else :
 			curr_moved_object = null
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if (Input.is_action_just_pressed("click") and curr_moved_object != null) :
 		is_dragging = true
 		curr_moved_object.freeze = true

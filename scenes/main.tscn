@@ -45,7 +45,7 @@ collide_with_areas = true
 debug_shape_custom_color = Color(0.989982, 0, 0.266643, 1)
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0214508, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015752, 0)
 collision_layer = 13
 collision_mask = 13
 
@@ -63,7 +63,7 @@ shape = SubResource("BoxShape3D_y4bs2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514883, -3.28199)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
-transform = Transform3D(20.4599, 0, 0, 0, 6.92472, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(20.4599, 0, 0, 0, 9.12271, 0, 0, 0, 1, 0, 3, 0)
 mesh = SubResource("QuadMesh_lrfkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]

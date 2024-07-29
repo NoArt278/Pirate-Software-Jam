@@ -4,7 +4,7 @@ var curr_level_number : int = 1
 var curr_level_resource : PackedScene
 var level_instance : Node
 var curr_finish
-const last_level : int = 4
+const last_level : int = 7
 
 signal reset_level
 

@@ -12,8 +12,8 @@ size = Vector3(1, 1.99634, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fmarf"]
 
 [node name="Enemy" type="AnimatableBody3D"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 36
+collision_mask = 36
 input_ray_pickable = false
 axis_lock_linear_z = true
 script = ExtResource("1_dk2v2")
@@ -34,8 +34,8 @@ mesh = SubResource("PrismMesh_8x6eg")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0207568, 0)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 36
+collision_mask = 36
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)

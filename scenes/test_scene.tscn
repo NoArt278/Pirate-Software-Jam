@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="1_m7vyj"]
 [ext_resource type="Texture2D" uid="uid://bqn6m0ayg1o6l" path="res://assets/cursor.png" id="2_pvq8b"]
-[ext_resource type="PackedScene" uid="uid://nbirr7jr3pr3" path="res://scenes/levels/level_4.tscn" id="3_4ulg2"]
+[ext_resource type="PackedScene" uid="uid://diba1edi3njtr" path="res://scenes/levels/level_6.tscn" id="3_bmmuo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h42fj"]
 
@@ -122,4 +122,4 @@ offset_bottom = 13.0
 texture = ExtResource("2_pvq8b")
 expand_mode = 1
 
-[node name="Level4" parent="." instance=ExtResource("3_4ulg2")]
+[node name="Level6" parent="." instance=ExtResource("3_bmmuo")]
