@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://udbdd10wsnjs"]
+[gd_scene load_steps=10 format=3 uid="uid://udbdd10wsnjs"]
 
 [ext_resource type="Script" path="res://scripts/objects/box.gd" id="1_urp60"]
+[ext_resource type="AudioStream" uid="uid://cjyrhcvr1q7f1" path="res://assets/sounds/bounce.wav" id="2_hcxtp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqmyg"]
 
@@ -223,3 +224,6 @@ shape = SubResource("BoxShape3D_bayue")
 libraries = {
 "": SubResource("AnimationLibrary_i3xpm")
 }
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hcxtp")

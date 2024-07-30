@@ -6,6 +6,8 @@ class_name Enemy
 @onready var hat_mesh = $HatMesh
 @onready var collision_shape_3d = $CollisionShape3D
 @onready var area_col = $Area3D/CollisionShape3D
+@onready var death_sound = $DeathSound
+
 const SPEED = 2.0
 var direction = 1
 var is_dead = false
@@ -16,6 +18,7 @@ func _physics_process(delta):
 
 func _on_area_3d_body_entered(body):
 	if (body is SelectableObject and body.is_damaging and not(is_dead)) :
+		death_sound.play()
 		collision_shape_3d.set_deferred("disabled", true)
 		area_col.set_deferred("disabled", true)
 		is_dead = true

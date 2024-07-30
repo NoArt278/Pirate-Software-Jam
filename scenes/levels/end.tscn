@@ -1,13 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://3nycnqpthjen"]
+[gd_scene load_steps=4 format=3 uid="uid://3nycnqpthjen"]
+
+[ext_resource type="PackedScene" uid="uid://b18e5032sl05w" path="res://scenes/finish.tscn" id="1_w278a"]
+[ext_resource type="PackedScene" uid="uid://ckpve2ofpq5xn" path="res://scenes/player.tscn" id="2_m2545"]
 
 [sub_resource type="TextMesh" id="TextMesh_rgrkr"]
-text = "That's all for now !
-Thank you for playing."
+text = "That's all for now ! Thank you for playing.
+Credits :
+Background music : Rewind by Pro Sensory 
+(CC0 license, link in description)
+SFX tool : jsfxr by Eric Fredricksen & fxr by DrPetter "
 font_size = 64
 
 [node name="End" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0951, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99334, 0)
 cast_shadow = 3
 mesh = SubResource("TextMesh_rgrkr")
+
+[node name="Finish" parent="." instance=ExtResource("1_w278a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.745869, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_m2545")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, 0.3586, 0)

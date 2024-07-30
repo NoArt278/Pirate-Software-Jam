@@ -11,6 +11,7 @@ var self_type : OBJECT_TYPE
 var is_trampoline : bool = false
 @onready var combine_area = $Area3D
 @onready var mesh_instance_3d = $MeshInstance3D
+@onready var bounce_sound = $BounceSound
 
 const BOUNCE_SPEED = 12
 
@@ -69,5 +70,6 @@ func combine_shapes(body) :
 		is_combined = true
 
 func body_collide(body) :
-	if (body is SelectableObject and body.is_trampoline) :
+	if (body is SelectableObject and body.is_trampoline and body.is_shadow) :
 		linear_velocity = BOUNCE_SPEED * (global_position - body.global_position).normalized()
+		bounce_sound.play()

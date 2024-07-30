@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdoxy2qiuknte"]
+[gd_scene load_steps=7 format=3 uid="uid://bdoxy2qiuknte"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dk2v2"]
+[ext_resource type="AudioStream" uid="uid://c10n1sofg5akd" path="res://assets/sounds/enemy_dead.wav" id="2_osbkp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8j8ew"]
 size = Vector3(1, 1.99634, 1)
@@ -40,5 +41,8 @@ collision_mask = 36
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("BoxShape3D_fmarf")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_osbkp")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

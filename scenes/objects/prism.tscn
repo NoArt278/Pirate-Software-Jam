@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb4ydyj18xnxd"]
+[gd_scene load_steps=11 format=3 uid="uid://bb4ydyj18xnxd"]
 
 [ext_resource type="Script" path="res://scripts/objects/prism.gd" id="1_cypsk"]
 [ext_resource type="Animation" uid="uid://ddfjaoff3dohk" path="res://assets/turn_to_shadow.res" id="1_sg0th"]
+[ext_resource type="AudioStream" uid="uid://cjyrhcvr1q7f1" path="res://assets/sounds/bounce.wav" id="3_51pr4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mdrxj"]
 friction = 0.5
@@ -92,3 +93,6 @@ collision_mask = 512
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 shape = SubResource("BoxShape3D_qhyrm")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_51pr4")

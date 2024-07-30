@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d23egkleo7mg2"]
+[gd_scene load_steps=11 format=3 uid="uid://d23egkleo7mg2"]
 
 [ext_resource type="Animation" uid="uid://ddfjaoff3dohk" path="res://assets/turn_to_shadow.res" id="1_b3jev"]
 [ext_resource type="Script" path="res://scripts/objects/sphere.gd" id="1_q3ks0"]
+[ext_resource type="AudioStream" uid="uid://cjyrhcvr1q7f1" path="res://assets/sounds/bounce.wav" id="3_wopog"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xl21e"]
 bounce = 0.9
@@ -117,3 +118,6 @@ collision_mask = 512
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 shape = SubResource("BoxShape3D_1gnce")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wopog")

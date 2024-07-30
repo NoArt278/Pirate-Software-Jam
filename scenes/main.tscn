@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://lvj5kb4woue6"]
+[gd_scene load_steps=15 format=3 uid="uid://lvj5kb4woue6"]
 
+[ext_resource type="AudioStream" uid="uid://d2crue8c2ua0d" path="res://assets/sounds/transform.mp3" id="2_2r2rf"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="2_ot845"]
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="2_wjf2o"]
+[ext_resource type="AudioStream" uid="uid://bms0x15b224tg" path="res://assets/sounds/pick_sound.wav" id="3_2uhf2"]
 [ext_resource type="Texture2D" uid="uid://bqn6m0ayg1o6l" path="res://assets/cursor.png" id="3_lh7ea"]
+[ext_resource type="AudioStream" uid="uid://bj5egh6ahfafi" path="res://assets/sounds/next_level.wav" id="4_wuqod"]
+[ext_resource type="AudioStream" uid="uid://vep4ey2takid" path="res://assets/sounds/Rewind.mp3" id="7_sabfs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mcv7h"]
 
@@ -31,21 +35,23 @@ fov = 70.0
 script = ExtResource("2_wjf2o")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-light_color = Color(0.565733, 0.565733, 0, 1)
+light_color = Color(0.644578, 0.64556, 0.0140103, 1)
 light_energy = 4.69
 spot_range = 726.663
 spot_angle = 54.67
 spot_angle_attenuation = 0.183012
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.997841, 0.0656818, 0, -0.0656818, 0.997841, 0, 0, 0)
-target_position = Vector3(0, 0, -1)
-collision_mask = 8
-collide_with_areas = true
-debug_shape_custom_color = Color(0.989982, 0, 0.266643, 1)
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true
+
+[node name="TransformSound" type="AudioStreamPlayer" parent="Camera3D"]
+stream = ExtResource("2_2r2rf")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="Camera3D"]
+stream = ExtResource("3_2uhf2")
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015752, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0222703, 0)
 collision_layer = 13
 collision_mask = 13
 
@@ -83,7 +89,7 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape3D_rhgxt")
 
 [node name="Side Wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5821, 0, -2.54367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1206, 0, -2.54367)
 collision_layer = 15
 collision_mask = 7
 
@@ -91,15 +97,19 @@ collision_mask = 7
 shape = SubResource("WorldBoundaryShape3D_d8646")
 
 [node name="Side Wall2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9788, 0, -2.54367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1971, 0, -2.54367)
 collision_layer = 15
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Side Wall2"]
 shape = SubResource("WorldBoundaryShape3D_uvuwh")
 
-[node name="Level" type="Node" parent="."]
+[node name="LevelManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_ot845")
+
+[node name="FinishSound" type="AudioStreamPlayer" parent="LevelManager"]
+stream = ExtResource("4_wuqod")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -125,4 +135,8 @@ offset_bottom = 13.0
 texture = ExtResource("3_lh7ea")
 expand_mode = 1
 
-[connection signal="reset_level" from="Level" to="Camera3D" method="_on_level_reset_level"]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_sabfs")
+autoplay = true
+
+[connection signal="reset_level" from="LevelManager" to="Camera3D" method="_on_level_reset_level"]

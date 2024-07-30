@@ -21,10 +21,10 @@ size = Vector3(5.00739, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8wae7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pyk80"]
-size = Vector3(2.12463, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3lr6o"]
+size = Vector3(3.1383, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_608vh"]
+[sub_resource type="BoxMesh" id="BoxMesh_7p4uo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kant"]
 size = Vector3(0.231934, 0.562874, 1)
@@ -85,16 +85,16 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D3"]
-shape = SubResource("BoxShape3D_pyk80")
+shape = SubResource("BoxShape3D_3lr6o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D3"]
-transform = Transform3D(2.13459, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+transform = Transform3D(3.09654, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
 cast_shadow = 3
-mesh = SubResource("BoxMesh_608vh")
+mesh = SubResource("BoxMesh_7p4uo")
 skeleton = NodePath("")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="Platforms/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.956287, 0.734939, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41265, 0.734939, 0)
 collision_layer = 4
 collision_mask = 4
 
@@ -108,7 +108,7 @@ cast_shadow = 3
 mesh = SubResource("BoxMesh_0w6u7")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="Platforms/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.952762, 0.734939, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40034, 0.734939, 0)
 collision_layer = 4
 collision_mask = 4
 

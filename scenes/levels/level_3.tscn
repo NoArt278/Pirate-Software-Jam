@@ -41,7 +41,7 @@ cast_shadow = 3
 mesh = SubResource("BoxMesh_4qfr0")
 
 [node name="Blocker" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55519, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55519, 0.631695, 0)
 collision_layer = 7
 collision_mask = 7
 

@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckpve2ofpq5xn"]
+[gd_scene load_steps=12 format=3 uid="uid://ckpve2ofpq5xn"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_mmyg1"]
 [ext_resource type="ArrayMesh" uid="uid://2jwlp8aofdwc" path="res://assets/arrow.obj" id="2_mm15a"]
+[ext_resource type="AudioStream" uid="uid://bnmrgptc8keo7" path="res://assets/sounds/jump.wav" id="3_h4slx"]
+[ext_resource type="AudioStream" uid="uid://t2xr41884di8" path="res://assets/sounds/player_dead.wav" id="4_folu5"]
+[ext_resource type="AudioStream" uid="uid://cjyrhcvr1q7f1" path="res://assets/sounds/bounce.wav" id="5_dim1w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j46ng"]
 size = Vector3(1, 1, 11)
@@ -94,6 +97,15 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0, 0)
 shape = SubResource("BoxShape3D_fsgr7")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h4slx")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_folu5")
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dim1w")
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="BounceTimer" to="." method="_on_bounce_timer_timeout"]
