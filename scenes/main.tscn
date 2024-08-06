@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://lvj5kb4woue6"]
+[gd_scene load_steps=19 format=3 uid="uid://lvj5kb4woue6"]
 
 [ext_resource type="AudioStream" uid="uid://d2crue8c2ua0d" path="res://assets/sounds/transform.mp3" id="2_2r2rf"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="2_ot845"]
@@ -24,14 +24,20 @@ plane = Plane(0, 0, 1, 0)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_11jbd"]
 plane = Plane(0, -1, 0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_odeii"]
+size = Vector3(0.96582, 9.1684, 12.4716)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqtqx"]
+size = Vector3(0.463745, 9.48282, 16.0891)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dk746"]
+plane = Plane(0, 0, -1, 0)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d8646"]
 plane = Plane(1, 0, 0, 0)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uvuwh"]
 plane = Plane(-1, 0, 0, 0)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dk746"]
-plane = Plane(0, 0, -1, 0)
 
 [node name="Node3D" type="Node3D"]
 
@@ -110,7 +116,8 @@ collision_layer = 15
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Side Wall"]
-shape = SubResource("WorldBoundaryShape3D_d8646")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475098, 4.0842, 5.73579)
+shape = SubResource("BoxShape3D_odeii")
 
 [node name="Side Wall2" type="StaticBody3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1971, 0, -2.54367)
@@ -118,7 +125,8 @@ collision_layer = 15
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Side Wall2"]
-shape = SubResource("WorldBoundaryShape3D_uvuwh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24408, 4.24141, 7.12425)
+shape = SubResource("BoxShape3D_sqtqx")
 
 [node name="Side Wall3" type="StaticBody3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5055)

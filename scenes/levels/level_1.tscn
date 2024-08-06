@@ -16,7 +16,8 @@ size = Vector3(5, 1.98395, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_7aihm"]
 material = SubResource("StandardMaterial3D_q1yni")
-text = "Use WASD to Move.
+text = "Use A/D to Move.
+Space to jump.
 Click and drag to move objects.
 Press R to reset level.
 "

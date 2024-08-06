@@ -24,8 +24,6 @@ func _ready():
 	init_z_pos = global_position.z
 
 func _physics_process(delta):
-	if is_on_ceiling() :
-		print("ceiling")
 	# Add the gravity.
 	if not is_on_floor():
 		if (coyote_timer.is_stopped() and can_jump) :
