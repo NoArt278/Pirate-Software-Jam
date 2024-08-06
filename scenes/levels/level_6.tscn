@@ -88,7 +88,7 @@ collision_mask = 4
 shape = SubResource("BoxShape3D_3lr6o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D3"]
-transform = Transform3D(3.09654, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+transform = Transform3D(3.128, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 3
 mesh = SubResource("BoxMesh_7p4uo")
 skeleton = NodePath("")

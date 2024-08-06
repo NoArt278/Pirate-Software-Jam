@@ -13,7 +13,7 @@ var is_trampoline : bool = false
 @onready var mesh_instance_3d = $MeshInstance3D
 @onready var bounce_sound = $BounceSound
 
-const BOUNCE_SPEED = 12
+const BOUNCE_SPEED = 10
 
 func turn_to_shadow() :
 	is_shadow = true

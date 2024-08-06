@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://lvj5kb4woue6"]
+[gd_scene load_steps=17 format=3 uid="uid://lvj5kb4woue6"]
 
 [ext_resource type="AudioStream" uid="uid://d2crue8c2ua0d" path="res://assets/sounds/transform.mp3" id="2_2r2rf"]
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="2_ot845"]
@@ -21,17 +21,23 @@ plane = Plane(0, 0, 1, 0)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rhgxt"]
 plane = Plane(0, 0, 1, 0)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_11jbd"]
+plane = Plane(0, -1, 0, 0)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_d8646"]
 plane = Plane(1, 0, 0, 0)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uvuwh"]
 plane = Plane(-1, 0, 0, 0)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dk746"]
+plane = Plane(0, 0, -1, 0)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841, -0.0149012, 2.07514, 5.34878)
-fov = 70.0
+transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841, -0.0159922, 2.09019, 5.35003)
+fov = 80.0
 script = ExtResource("2_wjf2o")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
@@ -80,28 +86,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, -1, 5, 9
 shadow_enabled = true
 directional_shadow_mode = 1
 
-[node name="Raycast Wall" type="StaticBody3D" parent="."]
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="Raycast Wall" type="StaticBody3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27184)
 collision_layer = 11
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Raycast Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Raycast Wall"]
 shape = SubResource("WorldBoundaryShape3D_rhgxt")
 
-[node name="Side Wall" type="StaticBody3D" parent="."]
+[node name="Raycast Wall2" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.05069, -1.27184)
+collision_layer = 15
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Raycast Wall2"]
+shape = SubResource("WorldBoundaryShape3D_11jbd")
+
+[node name="Side Wall" type="StaticBody3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1206, 0, -2.54367)
 collision_layer = 15
 collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Side Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Side Wall"]
 shape = SubResource("WorldBoundaryShape3D_d8646")
 
-[node name="Side Wall2" type="StaticBody3D" parent="."]
+[node name="Side Wall2" type="StaticBody3D" parent="Boundaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1971, 0, -2.54367)
 collision_layer = 15
 collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Side Wall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Side Wall2"]
+shape = SubResource("WorldBoundaryShape3D_uvuwh")
+
+[node name="Side Wall3" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5055)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Side Wall3"]
+shape = SubResource("WorldBoundaryShape3D_dk746")
+
+[node name="Side Wall4" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2371, 0, -2.54367)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Side Wall4"]
+shape = SubResource("WorldBoundaryShape3D_d8646")
+
+[node name="Side Wall5" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2796, 0, -2.54367)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Side Wall5"]
 shape = SubResource("WorldBoundaryShape3D_uvuwh")
 
 [node name="LevelManager" type="Node" parent="."]

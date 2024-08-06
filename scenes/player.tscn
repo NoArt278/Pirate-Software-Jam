@@ -58,7 +58,6 @@ axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-slide_on_ceiling = false
 script = ExtResource("1_mmyg1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

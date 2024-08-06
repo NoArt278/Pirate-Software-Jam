@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://tppusl5mexeo"]
+[gd_scene load_steps=10 format=3 uid="uid://tppusl5mexeo"]
 
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="1_m7vyj"]
 [ext_resource type="Texture2D" uid="uid://bqn6m0ayg1o6l" path="res://assets/cursor.png" id="2_pvq8b"]
-[ext_resource type="PackedScene" uid="uid://bg5x7dbslk7pl" path="res://scenes/levels/menu.tscn" id="3_emct3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h42fj"]
 
@@ -60,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94224, -0.231689, -1)
 shape = SubResource("BoxShape3D_imcq8")
 
 [node name="Wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514883, -3.28199)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.514883, -8.48199)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
 transform = Transform3D(20.4599, 0, 0, 0, 6.92472, 0, 0, 0, 1, 0, 3, 0)
@@ -121,5 +120,3 @@ offset_right = 11.0
 offset_bottom = 13.0
 texture = ExtResource("2_pvq8b")
 expand_mode = 1
-
-[node name="Menu" parent="." instance=ExtResource("3_emct3")]

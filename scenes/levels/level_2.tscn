@@ -16,7 +16,7 @@ size = Vector3(4.98779, 1, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_q3gq7"]
 material = SubResource("StandardMaterial3D_00uar")
-text = "Press T while dragging an object 
+text = "Press Z while dragging an object 
 to transform it into a shadow.
 You can't drag objects once they're 
 transformed.
@@ -59,15 +59,12 @@ shape = SubResource("BoxShape3D_2kjoi")
 
 [node name="Box" parent="Objects" instance=ExtResource("1_chs2s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034349, 3.03145, -0.101289)
-freeze = true
 
 [node name="Box2" parent="Objects" instance=ExtResource("1_chs2s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192611, 0.487847, -0.101289)
-freeze = true
 
 [node name="Box3" parent="Objects" instance=ExtResource("1_chs2s")]
 transform = Transform3D(0.999678, 0, 0.0253569, 0, 1, 0, -0.0253569, 0, 0.999678, 0.00804007, 1.71882, -0.101289)
-freeze = true
 
 [node name="Player" parent="." instance=ExtResource("2_dhe8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21392, 1.30718, 0.0366306)

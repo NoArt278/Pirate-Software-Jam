@@ -82,7 +82,7 @@ cast_shadow = 3
 mesh = SubResource("BoxMesh_snadj")
 
 [node name="Blocker2" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.74228, 2.46846, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66065, 2.46846, 0)
 collision_layer = 7
 collision_mask = 7
 
@@ -181,6 +181,6 @@ script = ExtResource("7_llvk4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7, 1.3, 0)
 
 [node name="Finish" parent="." instance=ExtResource("5_4otr0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.81655, 1.68112, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.34912, 1.47854, 0)
 
 [connection signal="dead" from="Player" to="Text/DeathText" method="_on_player_dead"]

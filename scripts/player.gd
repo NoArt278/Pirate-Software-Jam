@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.3
-const BOUNCE_SPEED = 12
+const SPEED = 4
+const JUMP_VELOCITY = 4.5
+const BOUNCE_SPEED = 10
 const PUSH_FORCE = 5
 var can_jump = true
 var is_bouncing = false
@@ -24,6 +24,8 @@ func _ready():
 	init_z_pos = global_position.z
 
 func _physics_process(delta):
+	if is_on_ceiling() :
+		print("ceiling")
 	# Add the gravity.
 	if not is_on_floor():
 		if (coyote_timer.is_stopped() and can_jump) :
