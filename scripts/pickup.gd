@@ -54,8 +54,8 @@ func _physics_process(_delta):
 			curr_moved_object.global_position = ray_hit_pos
 	elif (Input.is_action_just_released("click") and is_dragging) :
 		curr_moved_object.freeze = false
+		curr_moved_object.release_from_drag()
 		is_dragging = false
-		curr_moved_object.collision_layer = 25
 
 func _input(event):
 	if event is InputEventMouseMotion : 

@@ -43,7 +43,7 @@ plane = Plane(-1, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.997841, -0.0656818, 0, 0.0656818, 0.997841, -0.0159922, 2.09019, 5.35003)
-fov = 80.0
+fov = 70.0
 script = ExtResource("2_wjf2o")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
@@ -137,7 +137,7 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape3D_dk746")
 
 [node name="Side Wall4" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2371, 0, -2.54367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0371, 0, -2.54367)
 collision_layer = 3
 collision_mask = 3
 
@@ -145,7 +145,7 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape3D_d8646")
 
 [node name="Side Wall5" type="StaticBody3D" parent="Boundaries"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2796, 0, -2.54367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7796, 0, -2.54367)
 collision_layer = 3
 collision_mask = 3
 

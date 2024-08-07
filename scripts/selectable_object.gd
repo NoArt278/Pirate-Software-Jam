@@ -15,6 +15,10 @@ var is_trampoline : bool = false
 
 const BOUNCE_SPEED = 10
 
+func release_from_drag():
+	await get_tree().create_timer(0.5).timeout
+	collision_layer = 25
+
 func turn_to_shadow() :
 	is_shadow = true
 	var tween = create_tween()
