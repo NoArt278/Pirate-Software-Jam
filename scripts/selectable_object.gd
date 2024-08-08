@@ -12,12 +12,18 @@ var is_trampoline : bool = false
 @onready var combine_area = $Area3D
 @onready var mesh_instance_3d = $MeshInstance3D
 @onready var bounce_sound = $BounceSound
+@onready var release_timer : Timer = $ReleaseTimer
 
 const BOUNCE_SPEED = 10
 
 func release_from_drag():
-	await get_tree().create_timer(0.5).timeout
+	collision_layer = 10
+	release_timer.start()
+	await release_timer.timeout
 	collision_layer = 25
+
+func cancel_release():
+	release_timer.stop()
 
 func turn_to_shadow() :
 	is_shadow = true

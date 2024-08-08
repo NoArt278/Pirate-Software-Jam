@@ -39,6 +39,7 @@ func _physics_process(_delta):
 		is_dragging = true
 		curr_moved_object.freeze = true
 		curr_moved_object.collision_layer = 2
+		curr_moved_object.cancel_release()
 	if (Input.is_action_just_released("right_click")) :
 		is_rotating = false
 	if (Input.is_action_pressed("click") and is_dragging) :

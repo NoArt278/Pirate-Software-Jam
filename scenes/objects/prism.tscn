@@ -96,3 +96,6 @@ shape = SubResource("BoxShape3D_qhyrm")
 
 [node name="BounceSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_51pr4")
+
+[node name="ReleaseTimer" type="Timer" parent="."]
+wait_time = 0.5
