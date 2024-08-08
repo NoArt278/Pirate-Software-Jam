@@ -7,6 +7,7 @@ const BOUNCE_SPEED = 10
 const PUSH_FORCE = 5
 var can_jump = true
 var is_bouncing = false
+var is_dead = false
 var can_move = true
 var init_z_pos
 signal dead
@@ -73,7 +74,8 @@ func _on_bounce_timer_timeout():
 
 
 func _on_area_3d_body_entered(body):
-	if (body is Enemy) :
+	if (body is Enemy and not(is_dead)) :
+		is_dead = true
 		can_move = false
 		death_sound.play()
 		var tween = create_tween()

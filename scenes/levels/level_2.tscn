@@ -7,7 +7,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_4q2nk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6a2mj"]
-size = Vector3(4.98492, 1, 1)
+size = Vector3(5, 1.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2kjoi"]
 size = Vector3(4.98779, 1, 1)
@@ -28,12 +28,12 @@ font_size = 32
 [node name="Platforms" type="Node" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55519, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55519, 0.527558, 0)
 collision_layer = 4
 collision_mask = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D"]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00107682, 0)
+transform = Transform3D(5, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, -0.00107682, 0)
 cast_shadow = 3
 mesh = SubResource("BoxMesh_4q2nk")
 
